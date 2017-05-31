@@ -1,0 +1,11 @@
+{
+  "name": "vidr",
+  "version": "0.0.1",
+  "description": "First express app for vidr",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}
