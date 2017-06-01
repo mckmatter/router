@@ -1,0 +1,11 @@
+.tombstone {
+	text-align: center; 
+}
+
+.tombstone input {
+	display: block;
+}
+
+.tombstone select {
+	display: block;
+}

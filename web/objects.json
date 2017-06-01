@@ -1,21 +1,21 @@
 {
-	protocol: [
-		{
-			0: null,
-			1: "RTMP", 
-			2: "RTSP",
-		}
-	],
+	protocol: {
+		0: null,
+		1: "RTMP", 
+		2: "RTSP",
+	},
 
 	streams: [
 		{
 			title: "",
 			id: 0,
 			protocol: 0,
-			encode: false,
+			destination: "",
 			StreamURL: "",
 			StreamKey: "",
 			Created: "",
+			Expires: "",
+			
 		}
 	]
 

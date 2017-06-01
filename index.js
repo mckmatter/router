@@ -16,8 +16,8 @@ app.post('/submit', function(req, res) {
   		body.push(chunk);
 	}).on('end', function() {
   	body = Buffer.concat(body).toString();
-  	body = JSON.parse(body);
-  	console.log(body.id);
+  	//body = JSON.parse(body);
+  	console.log(body);
 	});
 
 	res.send();

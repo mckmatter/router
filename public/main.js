@@ -5,13 +5,22 @@ $(document).ready(function() {
 
 	var url = [{txt1:$("#url").val()}];
 
-	$(document).on('click', '#test', function () {
+	$(".tombstone").on('click', '#update', function () {
 		console.log($("#url").val());
+		var json = {
+			title: $('#title').val(), 
+			id: $('#id').val(),
+			type: $('#type').val(),
+			url: $('#url').val(),
+			status: $('#status').val(),
+		};
+		
+
 		$.ajax({
 			type: "POST",
 			url: "/submit",
 			dataType: 'json',
-			data: JSON.stringify({id: $('#url').val()})
+			data: JSON.stringify(json)
 		});
 	});
 

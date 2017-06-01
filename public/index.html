@@ -3,6 +3,7 @@
 <head>
 	<title>Vidr Router 0.1</title>
 
+	<link rel="stylesheet" type="text/css" href="style.css">  
 	<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
 
 	<script type="text/javascript" src='main.js'></script>
@@ -10,13 +11,21 @@
 </head>
 <body>
 
-<div class="source-tombs">
-<h1>Sources</h1>
-<div class="source1">
-	<h2>Source 1</h2>
-	<input type="text" id="url">
-	<input type="button" id="test" value="Save">
-</div>
+<div class="tombstone">
+<input type="text" id="title" value="title">
+<input type="text" id="id" value="id">
+<select id="Type">
+	<option value="Select">Select...</option>
+	<option value="Source">RTSP</option>
+	<option value="Destination">RTMP</option>
+</select>
+<input type="text" id="url" value="rtsp://">
+<select id="status">
+	<option value="Active">Active</option>
+	<option value="Disabled">Disabled</option>
+</select>
+<input type="button" id="update" value="Update">
+
 
 </div>
 
