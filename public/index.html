@@ -12,22 +12,32 @@
 <body>
 
 <div class="tombstone">
-<input type="text" id="title" value="title">
-<input type="text" id="id" value="id">
-<select id="Type">
-	<option value="Select">Select...</option>
-	<option value="Source">RTSP</option>
-	<option value="Destination">RTMP</option>
-</select>
-<input type="text" id="url" value="rtsp://">
-<select id="status">
-	<option value="Active">Active</option>
-	<option value="Disabled">Disabled</option>
-</select>
-<input type="button" id="update" value="Update">
 
+<div class="form-wrapper">
+
+	<input type="text" id="title" value="title">
+	<input type="text" id="id" value="id">
+	<select id="realm">
+		<option value="Realm">Realm...</option>
+		<option value="Source">Source</option>
+		<option value="Destination">Destination</option>
+	</select>
+	<select id="Type">
+		<option value="Select">Select...</option>
+		<option value="RTSP">RTSP</option>
+		<option value="RTMP">RTMP</option>
+	</select>
+	<input type="text" id="url" value="rtsp://">
+	<select id="status">
+		<option value="Active">Active</option>
+		<option value="Disabled">Disabled</option>
+	</select>
+	<input type="button" id="update_1" value="Update">
 
 </div>
+
+</div>
+
 
 
 

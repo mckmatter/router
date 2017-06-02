@@ -1,11 +1,25 @@
+
+
 .tombstone {
-	text-align: center; 
+	border: 2px solid black;
+	width: 160px;
+	margin: 10px 10px 10px 10px; 
 }
 
 .tombstone input {
 	display: block;
+	text-align: center; 
+	width: 100px;
+	margin: 5px 0px 5px 0px;
 }
 
 .tombstone select {
+	width: 100px;
 	display: block;
+	text-align: center; 
+	margin: 5px 0px 5px 0px;
+}
+
+.form-wrapper {
+	margin: 5px 30px 5px 30px;
 }

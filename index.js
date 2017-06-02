@@ -5,9 +5,15 @@ var app = express();
 
 //var morgan = require('morgan');
 
+
+
 var com_port = 3000;
 
 app.use(express.static('public'));
+
+app.get('/', function(req, res) {
+
+});
 
 
 app.post('/submit', function(req, res) {
@@ -21,7 +27,7 @@ app.post('/submit', function(req, res) {
 	});
 
 	res.send();
-})
+});
 
 app.listen(com_port, function() {
 	console.log('App listening at port ' + com_port);
