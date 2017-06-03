@@ -25,7 +25,7 @@ $(document).ready(function() {
 	function updateObject(tombstone) {
 		$.ajax({
 			type: "POST",
-			url: "/submit",
+			url: "/stones",
 			dataType: 'json',
 			data: JSON.stringify(tombstone)
 		});
