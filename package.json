@@ -1,5 +1,5 @@
 {
-  "name": "vidr",
+  "name": "router",
   "version": "0.0.1",
   "description": "First express app for vidr",
   "main": "index.js",

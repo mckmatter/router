@@ -4,7 +4,6 @@ var app = express();
 var stoneController = require('./stoneUtils.js');
 
 
-
 var com_port = 3000;
 
 app.use(express.static('public'));

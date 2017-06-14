@@ -1,0 +1,214 @@
+#This is the API for the Router Server
+
+/sources
+  get:
+    description: Retrieve a json array of all sources
+    responses: 
+      200:
+        body: 
+          application/json:
+            example: |
+              { "data": [
+                  {
+                    "sourceId": "1000",
+                    "sourceTitle": "Teradek Encoder 1",
+                    "sourcedescription": null,
+                    "sourceManager": netstream,
+                    "deviceId": null,
+                    "streamUrl": "rtsp://<ipaddress>/stream1",
+                    "streamKey": null,
+                    "streamUsername": null,
+                    "streamPassword": null,
+                    "streamStatus", 1
+                  },
+                  {
+                    "sourceId": "101",
+                    "sourceTitle": "LOCAL SDI IN 1",
+                    "sourcedescription": Decklink Duo,
+                    "sourceManager": 11,
+                    "deviceId": decklink1a,
+                    "streamUrl": null,
+                    "streamKey": null,
+                    "streamUsername": null,
+                    "streamPassword": null,
+                    "streamStatus", 1
+                  },
+                ], 
+                "success": true,
+                "status": 200
+              }
+      500:
+        description: |
+          Internal Server Error
+
+  post:
+      description: |
+        Add a source. ID will be assigned by server.
+        Server responds with complete object with its assigned ID.
+        Be sure to match the keys as shown in example.
+        Provide as many or as little as possible.
+        Server will create source if possible.
+      body:
+        application/json:
+          example: |
+                { data: 
+                  {
+                    "sourceTitle": "LOCAL SDI IN 1",
+                    "sourcedescription": Decklink Duo,
+                    "deviceId": decklink1a,
+                    "streamUrl": null,
+                    "streamKey": null,
+                    "streamUsername": null,
+                    "streamPassword": null,
+                    "streamStatus", "1";
+                  }
+                }
+      responses:
+        200:
+          description: |
+            Success response is json with all properties of source
+            Unkown properties will be null
+          body:
+            application/json:
+              example: |
+                { "data": 
+                  {
+                    "sourceId": 1002
+                    "sourceTitle": "LOCAL SDI IN 1",
+                    "sourcedescription": Decklink Duo,
+                    "sourceManager": 11,
+                    "deviceId": decklink1a,
+                    "streamUrl": null,
+                    "streamKey": null,
+                    "streamUsername": null,
+                    "streamPassword": null,
+                    "streamStatus", 1
+                  }
+                  "success": true,
+                  "status": 200
+                }
+        400:
+          description: |
+            Bad Request Response
+            If you post and not enough attributes to create the source are specified
+            the server will return status 400.
+        500:
+          description: |
+            Server Error Response
+            If you post and the server has an internal error,
+            it will attempt to respond with 500
+
+
+  /{sourceId}
+    get:
+      description: Retrive a specific source json by its id
+      responses: 
+        200:
+          body:
+            application/json:
+              example: |
+                { "data":
+                  {
+                    "sourceId": "1001",
+                    "sourceTitle": "LOCAL SDI IN 1",
+                    "sourcedescription": Decklink Duo,
+                    "sourceManager": 11,
+                    "deviceId": decklink1a,
+                    "streamUrl": null,
+                    "streamKey": null,
+                    "streamUsername": null,
+                    "streamPassword": null,
+                    "streamStatus", 1
+                  }
+                  "success": true,
+                  "status": 200
+                }
+        400:
+          description: Invalid sourceId
+        500:
+          description: Internal Server Error
+    put:
+      description: |
+        Update a Source by its ID
+        Pass JSON with the sourceID and any other
+        user adjustable parameter with its updated value
+      body:
+        application/json:
+          example: |
+          {
+            "data": 
+            {
+              "sourceID": 2000,
+              "sourceUrl": "rtsp://<ipaddress>/stream2"
+            }
+          }
+
+
+/destinations
+ get: 
+  description: |
+    Get a json array of all destination objects
+  responses:
+    200:
+      example: |
+        {
+          "data": [
+          {
+            "destinationId": 2000,
+            "destinationTitle": "Raspberry Pi 1",
+            "destinationDescription": "Front Entry Screen",
+            "destinationManager": "21", 
+            "currentSourceAssignment": 1001,
+            "defaultSourceAssignment": 1000
+          },
+          {
+            "destinationID": 2001,
+            "destinationTitle": "Raspberry Pi 2",
+            "destinationDescription": "Gymnasium Entrance",
+            "destinationManager": "21";
+            "currentSourceAssignment": 1001,
+            "defaultSourceAssignment": 1000
+          }
+          "success": true,
+          "status": 200
+        }
+    400:
+    500:
+  /{destinationId}-{currentSourceAssignment}
+      put:
+        description: |
+          Update a destination's currentSourceAssignment based on destinationID
+          currentSourceAssignment should match an active sourceId
+        body:
+          application/json:
+            example: |
+              http://localhost:3000/destinations/2001-1000
+        responses:
+          200: 
+            description: Valid Source Assignment
+          400:
+            description: Invalid Source Assignment
+          500:
+            description: Internal Server Error
+
+
+/schedular
+  put:
+    description: |
+      Pass JSON in the body with the at least the destinationID, sourceAssignment, startTime
+      If endTime is specified, request will set destination to defaultSourceAssignment at endTime
+    body:
+      application/json:
+        example: |
+          {
+            "data": 
+            {
+              "destinationID": 2001,
+              "sourceAssignment": 1001,
+              "startTime": Date().getTime(),
+              "endTime": Date().getTime()
+            }
+          }
+
+
+  
